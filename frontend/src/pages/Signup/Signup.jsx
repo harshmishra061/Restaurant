@@ -5,6 +5,7 @@ import { Grid2 as Grid, Link, Typography } from '@mui/material'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../../contexts/authContext'
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 const Signup = () => {
     const { addToken } = useContext(AuthContext)
     console.log(addToken)
@@ -18,8 +19,9 @@ const Signup = () => {
 
     const signupUser = async () => {
         try {
+            const url = `${API_URL}signup`;
             const response = await axios.post(
-                'http://localhost:3000/signup',
+                url,
                 data
             )
             let token = 'abcdef'
