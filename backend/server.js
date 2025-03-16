@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
@@ -9,7 +10,7 @@ const port = 3000;
 
 async function connect() {
     try {
-        await mongoose.connect('mongodb+srv://harshmishra27122003:Harsh1122@cluster0.eeceq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log('Connected to DB');
     } catch (error) {
         console.log('Error while connecting to DB', error);
