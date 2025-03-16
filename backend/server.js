@@ -33,6 +33,11 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+app.get('/', (req, res) => {
+    res.send('Backend is working');
+}
+);
+
 app.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
     const user = await User.findOne({ email });
